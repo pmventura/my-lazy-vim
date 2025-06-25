@@ -1,12 +1,11 @@
 -- Keymaps are automatically loaded on the VeryLazy event
 -- Default keymaps that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/keymaps.lua
 -- Add any additional keymaps here
-
--- TODO: Comment the discipline for now
 -- local discipline = require("craftzdog.discipline")
 
 -- discipline.cowboy()
 
+-- TODO: Comment the discipline for now
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
@@ -79,3 +78,6 @@ end)
 vim.api.nvim_create_user_command("ToggleAutoformat", function()
   require("craftzdog.lsp").toggleAutoformat()
 end, {})
+
+local builtin = require("telescope.builtin")
+keymap.set("n", "<leader>fg", builtin.live_grep, { desc = "Live Grep (project)" })
